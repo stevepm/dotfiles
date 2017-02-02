@@ -95,3 +95,4 @@ export PATH=/Applications/Postgres.app/Contents/Versions/9.6/bin:$PATH
 export ERLASTIC_SEARCH_JSON_MODULE='blitz_json'
 PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
 MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
+echo $HOME
