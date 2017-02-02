@@ -84,7 +84,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias config='/usr/bin/git --git-dir=/Users/steve/.cfg/ --work-tree=/Users/steve'
-alias chef="ssh steve@chef.tripping.com"
+alias chef="ssh steve@chef.tripping.com -A"
 alias rsync="launchctl start vagrant-rsync"
 alias rsync-stop="launchctl stop vagrant-rsync"
 alias rsync-restart="launchctl stop vagrant-rsync && launchctl start vagrant-rsync"
