@@ -84,3 +84,14 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias config='/usr/bin/git --git-dir=/Users/steve/.cfg/ --work-tree=/Users/steve'
+eval $(keychain --eval ~/.ssh/id_rsa)
+alias chef="ssh steve@chef.tripping.com"
+alias rsync="launchctl start vagrant-rsync"
+alias rsync-stop="launchctl stop vagrant-rsync"
+alias rsync-restart="launchctl stop vagrant-rsync && launchctl start vagrant-rsync"
+alias g="git"
+alias v="vagrant"
+export PATH=/Applications/Postgres.app/Contents/Versions/9.6/bin:$PATH
+export ERLASTIC_SEARCH_JSON_MODULE='blitz_json'
+PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
+MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
