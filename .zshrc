@@ -4,10 +4,12 @@
 # Path to your oh-my-zsh installation.
   export ZSH=$HOME/.oh-my-zsh
 
+ln -s $HOME/.pure.zsh $ZSH/custom/pure.zsh-theme
+ln -s $HOME/.async.zsh $ZSH/custom/async.zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="pure"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
