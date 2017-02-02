@@ -84,7 +84,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias config='/usr/bin/git --git-dir=/Users/steve/.cfg/ --work-tree=/Users/steve'
-eval $(keychain --eval ~/.ssh/id_rsa)
 alias chef="ssh steve@chef.tripping.com"
 alias rsync="launchctl start vagrant-rsync"
 alias rsync-stop="launchctl stop vagrant-rsync"
@@ -95,4 +94,17 @@ export PATH=/Applications/Postgres.app/Contents/Versions/9.6/bin:$PATH
 export ERLASTIC_SEARCH_JSON_MODULE='blitz_json'
 PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
 MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
-echo $HOME
+
+# Returns 0 iff we're *NOT* in an SSH session
+_is_not_ssh_session()
+{
+   [ "$SSH_CLIENT" ] || [ "$SSH_TTY" ] && return 1
+   case $(ps -o comm= -p $PPID) in
+       sshd|*/sshd) return 1;;
+   esac
+   return 0
+}
+
+if _is_not_ssh_session; then
+	eval $(keychain --eval ~/.ssh/id_rsa)
+fi
