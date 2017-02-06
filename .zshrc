@@ -108,3 +108,4 @@ _is_not_ssh_session()
 if _is_not_ssh_session; then
 	eval $(keychain --eval ~/.ssh/id_rsa)
 fi
+export PATH="/usr/local/sbin:$PATH"
