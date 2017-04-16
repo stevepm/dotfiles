@@ -109,3 +109,9 @@ if _is_not_ssh_session; then
 	eval $(keychain --eval ~/.ssh/id_rsa)
 fi
 export PATH="/usr/local/sbin:$PATH"
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+export TRIPPING_VAGRANT_CHEF_REPO_PATH=$HOME/tripping/chef
+export PATH="/usr/local/opt/elasticsearch@2.4/bin:$PATH"
+export PATH="/usr/local/opt/kibana@4.4/bin:$PATH"
+export GOPATH="$HOME/go"
