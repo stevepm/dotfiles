@@ -84,7 +84,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias config='/usr/bin/git --git-dir=/Users/steve/.cfg/ --work-tree=/Users/steve'
-alias chef="ssh steve@chef.tripping.com -A"
+alias cchef="ssh steve@chef.tripping.com -A"
 alias rsync="launchctl start vagrant-rsync"
 alias rsync-stop="launchctl stop vagrant-rsync"
 alias rsync-restart="launchctl stop vagrant-rsync && launchctl start vagrant-rsync"
@@ -115,3 +115,4 @@ export TRIPPING_VAGRANT_CHEF_REPO_PATH=$HOME/tripping/chef
 export PATH="/usr/local/opt/elasticsearch@2.4/bin:$PATH"
 export PATH="/usr/local/opt/kibana@4.4/bin:$PATH"
 export GOPATH="$HOME/go"
+export PATH=$PATH:/Users/steve/.cache/rebar3/bin
