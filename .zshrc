@@ -116,3 +116,9 @@ export PATH="/usr/local/opt/elasticsearch@2.4/bin:$PATH"
 export PATH="/usr/local/opt/kibana@4.4/bin:$PATH"
 export GOPATH="$HOME/go"
 export PATH=$PATH:/Users/steve/.cache/rebar3/bin
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/steve/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/steve/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/steve/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/steve/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
