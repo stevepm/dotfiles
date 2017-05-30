@@ -7,7 +7,7 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="pure"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -45,13 +45,13 @@ COMPLETION_WAITING_DOTS="true"
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+ZSH_CUSTOM=$HOME/.custom
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git colorize zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -84,8 +84,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias config='/usr/bin/git --git-dir=/Users/steve/.cfg/ --work-tree=/Users/steve'
-eval $(keychain --eval ~/.ssh/id_rsa)
-alias chef="ssh steve@chef.tripping.com"
+alias cchef="ssh steve@chef.tripping.com -A"
 alias rsync="launchctl start vagrant-rsync"
 alias rsync-stop="launchctl stop vagrant-rsync"
 alias rsync-restart="launchctl stop vagrant-rsync && launchctl start vagrant-rsync"
@@ -95,3 +94,31 @@ export PATH=/Applications/Postgres.app/Contents/Versions/9.6/bin:$PATH
 export ERLASTIC_SEARCH_JSON_MODULE='blitz_json'
 PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"
 MANPATH="/usr/local/opt/findutils/libexec/gnuman:$MANPATH"
+
+# Returns 0 iff we're *NOT* in an SSH session
+_is_not_ssh_session()
+{
+   [ "$SSH_CLIENT" ] || [ "$SSH_TTY" ] && return 1
+   case $(ps -o comm= -p $PPID) in
+       sshd|*/sshd) return 1;;
+   esac
+   return 0
+}
+
+if _is_not_ssh_session; then
+	eval $(keychain --eval ~/.ssh/id_rsa)
+	source /usr/local/share/chruby/auto.sh
+	source /usr/local/share/chruby/chruby.sh
+fi
+export PATH="/usr/local/sbin:$PATH"
+export TRIPPING_VAGRANT_CHEF_REPO_PATH=$HOME/tripping/chef
+export PATH="/usr/local/opt/elasticsearch@2.4/bin:$PATH"
+export PATH="/usr/local/opt/kibana@4.4/bin:$PATH"
+export GOPATH="$HOME/go"
+export PATH=$PATH:/Users/steve/.cache/rebar3/bin
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/steve/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/steve/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/steve/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/steve/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
